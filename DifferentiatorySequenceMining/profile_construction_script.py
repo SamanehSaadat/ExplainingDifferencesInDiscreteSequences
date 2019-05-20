@@ -3,11 +3,16 @@ import matplotlib.pyplot as plt
 import numpy as np
 import matplotlib
 import pandas as pd
+import os
 
+exp_dir = "../experiments"
 data_dir = "../sample_data"
+plot_dir = "../plot"
+if os.path.isdir(plot_dir) == False:
+    os.mkdir(plot_dir)
 
 seqs_file = "%s/sequences.csv" % data_dir
-seqs = pd.read_csv(seqs_file)['sequence'].tolist()
+seqs = pd.read_csv(seqs_file)['sequence'].tolist()[0: 1]
 
 m = MatrixProfileBasedMining.MatrixProfile()
 window_sizes = [20, 50, 100]
@@ -18,7 +23,7 @@ c = 0
 for i in range(len(seqs)):
     for j in range(len(window_sizes)):
         print(i, window_sizes[j])
-        f = 'mat/dist_mat_s%d_w%d.np.npy' % (i, window_sizes[j])
+        f = '%s/dist_mat_s%d_w%d.np.npy' % (exp_dir, i, window_sizes[j])
         dist_mat = m.distance_matrix(seqs[i], window_sizes[j])
         np.save(f, dist_mat)
         # dist_mat = np.load(f)
@@ -31,13 +36,13 @@ for i in range(len(seqs)):
                      ax[j].get_xticklabels() + ax[j].get_yticklabels()):
             item.set_fontsize(8)
 fig.tight_layout()
-plt.savefig('plots/distance_matrix.png')
+plt.savefig('%s/distance_matrix.png' % plot_dir)
 
 fig2, ax2 = plt.subplots(nrows=1, ncols=1, dpi=150, figsize=(8, 2))
 for i in range(len(seqs)):
     for j in range(len(window_sizes)):
         print(i, window_sizes[j])
-        f = 'mat/dist_mat_s%d_w%d.np.npy' % (i, window_sizes[j])
+        f = '%s/dist_mat_s%d_w%d.np.npy' % (exp_dir, i, window_sizes[j])
         dist_mat = np.load(f)
 
         profile = m.matrix_profile(dist_mat)
@@ -47,5 +52,5 @@ for i in range(len(seqs)):
             ax2.set_xlabel('subsequence position')
 plt.legend()
 fig2.tight_layout()
-plt.savefig('plots/matrix_profile.png')
+plt.savefig('%s/matrix_profile.png' % plot_dir)
 
