@@ -18,7 +18,7 @@ from sklearn.metrics import *
 np.random.seed(7)
 
 exp_dir = "../experiments"
-data_dir = "../data"
+data_dir = "../sample_data"
 words_count = 14
 
 t = pd.read_csv("%s/group1.csv" % data_dir)

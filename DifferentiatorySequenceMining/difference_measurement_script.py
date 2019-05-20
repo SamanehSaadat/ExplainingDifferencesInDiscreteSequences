@@ -3,7 +3,7 @@ import pandas as pd
 import collections
 
 exp_dir = "../experiments"
-data_dir = "../data"
+data_dir = "../sample_data"
 
 res_dict = collections.defaultdict(list)
 for k in range(2, 6):

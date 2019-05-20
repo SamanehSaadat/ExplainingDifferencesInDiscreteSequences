@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib
 import pandas as pd
 
-data_dir = "../data"
+data_dir = "../sample_data"
 
 seqs_file = "%s/sequences.csv" % data_dir
 seqs = pd.read_csv(seqs_file)['sequence'].tolist()
