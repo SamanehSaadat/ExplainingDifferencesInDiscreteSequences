@@ -1,4 +1,7 @@
-# SequenceMining
+# Explaining Differences in Classes of Discrete Sequences
+While there are many machine learning methods to classify and cluster sequences, they fail to explain what are the differences in groups of sequences that make them distinguishable. Although in some cases having a black box model is sufficient, there is a need for increased explainability in research areas focused on human behaviors. For example, psychologists are less interested in having a model that predicts human behavior with high accuracy and more concerned with identifying differences between actions that lead to divergent human behavior.
+This paper presents techniques for understanding differences between classes of discrete sequences. Approaches introduced in this paper can be utilized to interpret black box machine learning models on sequences. The first approach compares k-gram representations of sequences using the silhouette score. The second method characterizes differences by analyzing the distance matrix of subsequences. As a case study, we trained black box supervised learning methods to classify sequences of GitHub teams and then utilized our sequence analysis techniques to measure and characterize differences between event sequences of teams with bots and teams without bots.
+## Scripts
 * TFISFBasedMining.py implamentation of class that compares two groups of sequences by converting the k-gram representation of sequences to vectors and measuring the silhouette score of the groups.
 * MatrixProfileBasedMining.py implamentation of class that creates distance matrix and matrix profiles for sequences.
 * difference\_measurement\_script.py test code for TFISFBasedMining.py
